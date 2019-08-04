@@ -34,10 +34,10 @@ cacheSolve <- function(x, ...) {
 # If the inverse has already been calculated (and the matrix has not changed),
 # 		then `cacheSolve` should retrieve the inverse from the cache.
 # Computing the inverse of a square matrix can be done with the `solve` function in R.
-# For example, if `X` is a square invertible matrix,
-# 		then `solve(X)` returns its inverse.
+# For example, if `X` is a square invertible matrix, then `solve(X)` returns its inverse.
+
 	# first, we check to see if the inverse has already been calculated
-		#1. get the cached inverse
+		#get the cached inverse
 		m <- x$getinverse()
 		#if m isn't null, it means there's a cached calculation/inverse value already stored.
 		if(!is.null(m)) {
@@ -46,10 +46,11 @@ cacheSolve <- function(x, ...) {
 				return(m)
 		}
 	# if we're on this line, it means the inverse hasn't been calculated, so we need to compute and then store it in the cache
+		#get matrix value
 		data <- x$get()
 		#compute inverse using solve, as per direction
 		m <- solve(data, ...)
-		# store/set computation we got for inverse in the cache for later so we don't have to do it again
+		#store/set computation we got for inverse in the cache for later so we don't have to do it again
 		x$setinverse(m)
 		#returns inverse
 		m
